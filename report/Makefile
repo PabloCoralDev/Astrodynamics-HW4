@@ -11,7 +11,7 @@ outputs:
 	cd .. && MPLBACKEND=Agg $(PY) problem1.py > report/outputs/problem1.txt
 	cd .. && $(PY) problem2.py > report/outputs/problem2.txt
 	# problem3to8.py runs all six; split its output at each "Problem N" header into problemN.txt
-	cd .. && MPLBACKEND=Agg $(PY) problem3to8.py | awk '/^Problem [3-8]$$/ {f = "report/outputs/problem" $$2 ".txt"} f {print > f}'
+	cd .. && MPLBACKEND=Agg $(PY) problem3to8.py | awk '/^Problem 3-[3-8]$$/ {f = "report/outputs/problem" substr($$2, 3) ".txt"} f {print > f}'
 
 clean:
 	rm -f main.aux main.log main.out main.pdf

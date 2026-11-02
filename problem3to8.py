@@ -111,12 +111,12 @@ def run_case(idx, problem_label, savefig_path):
 
 # Organize problems with labels and output paths for ease of formatting/output.
 PROBLEMS = {
-    3: (1, "Problem 3", "report/figures/problem3_orbit.png"),
-    4: (2, "Problem 4", "report/figures/problem4_orbit.png"),
-    5: (3, "Problem 5", "report/figures/problem5_orbit.png"),
-    6: (4, "Problem 6", "report/figures/problem6_orbit.png"),
-    7: (5, "Problem 7", "report/figures/problem7_orbit.png"),
-    8: (6, "Problem 8", "report/figures/problem8_orbit.png"),
+    3: (1, "Problem 3-3", "report/figures/problem3_orbit.png"),
+    4: (2, "Problem 3-4", "report/figures/problem4_orbit.png"),
+    5: (3, "Problem 3-5", "report/figures/problem5_orbit.png"),
+    6: (4, "Problem 3-6", "report/figures/problem6_orbit.png"),
+    7: (5, "Problem 3-7", "report/figures/problem7_orbit.png"),
+    8: (6, "Problem 3-8", "report/figures/problem8_orbit.png"),
 }
 
 

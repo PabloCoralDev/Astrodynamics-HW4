@@ -13,10 +13,9 @@ pip install -r requirements.txt
 ## Run (from this folder)
 
 ```bash
-python problem1.py        # Problem 3-1: twoBodyOde + ode113-equivalent integration, 6 cases
-python problem2.py        # Problem 3-2: general Kepler-equation solver, demo on Case 1
-python problem3to8.py     # Problems 3-3 to 3-8: Cases 1-6, E, nu, r(t)/v(t), ode113 comparison, time series
-python problem3to8.py 5   # just one problem (here 3-5); any of 3-8, or several, e.g. 3 7
+python problem1.py    # Problem 3-1: twoBodyOde + ode113-equivalent integration, 6 cases
+python problem2.py    # Problem 3-2: general Kepler-equation solver, demo on Case 1
+python problem3to8.py # Problems 3-3 to 3-8: Cases 1-6, E, nu, r(t)/v(t), ode113 comparison, time series
 ```
 
 `cases.py` holds the six (t0, tf, r0, v0) cases shared by Problems 3-1 and 3-3 to 3-8.
