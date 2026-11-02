@@ -5,6 +5,30 @@ Given $\vect{r}(t_0)$, $\ivect{v}(t_0)$ at $t_0 = 1329.16$ min for Case 1, the K
 
 \programoutput{outputs/problem3.txt}
 
+The Kepler solution agrees with \texttt{ode113} to within $0.18$~km in position and $1.4\times10^{-4}$~km/s in velocity at $t_f$. This is the largest difference of the six cases because the final eccentric anomaly is close to $0^\circ$ ($E \approx 8^\circ$), where the fixed-point iteration converges slowest, so the $N$ iterations of Eq.~(3.58) leave a small residual. With $E^*$ the exact solution and $\delta^{(n)} = E^{(n)} - E^*$ the error at iteration $n$, subtracting $E^* = e\sin E^* + C$ from Eq.~(3.56) gives
+\begin{equation}
+    \delta^{(n+1)} = e\left(\sin E^{(n)} - \sin E^*\right) \overset{\text{small angle}}{\approx} e\cos E^*\,\delta^{(n)}.
+\end{equation}
+Each iteration therefore multiplies the error by $e\cos E^*$, so after $n$ iterations
+\begin{equation}
+    \delta^{(n)} \approx \left(e\cos E^*\right)^n \delta^{(0)}.
+\end{equation}
+The error vanishes quickly when $|e\cos E^*|$ is near 0 and only slowly when it is near 1:
+\begin{equation}
+    \begin{aligned}
+        E^* \approx 0^\circ &:\ |e\cos E^*| \approx e = 0.87 \quad (\text{slow, almost }\times 1), \\
+        E^* = 90^\circ &:\ |e\cos E^*| = 0 \quad (\text{fast, error virtually none}).
+    \end{aligned}
+\end{equation}
+
+So it can be seen the error 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/fpi_convergence.png}
+    \caption{Error of the fixed-point iteration (Eq.~3.56) versus iteration number for a solution at $E = 0^\circ$ and $E = 90^\circ$, with $e = 0.8705$ (Case 1), $N = 80$, and the same 0.5~rad starting error.}
+\end{figure}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{figures/problem3_orbit.png}
