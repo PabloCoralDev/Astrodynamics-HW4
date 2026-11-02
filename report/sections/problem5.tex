@@ -1,0 +1,14 @@
+\section{Problem 3-5}
+\label{sec:problem5}
+
+Given $\vect{r}(t_0)$, $\ivect{v}(t_0)$ at $t_0 = 242.82$ min for Case 3, the same Kepler-equation solver is used to find $E$, $\nu$, and $\vect{r}(t)$, $\ivect{v}(t)$ at $t = 612.69$ min, with $\mu = 398600~\text{km}^3\cdot\text{s}^{-2}$, and the result is compared to \texttt{ode113} at $t_f$ and over a 100-subinterval time series.
+
+\programoutput{outputs/problem5.txt}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/problem5_orbit.png}
+    \caption{PCI position time series from the Kepler solver compared to \texttt{ode113}, Problem 3-5.}
+\end{figure}
+
+\FloatBarrier

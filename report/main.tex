@@ -1,0 +1,157 @@
+\documentclass[11pt]{article}
+
+% ── Packages ────────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{cancel}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,bending,calc,3d}
+\usepackage{listings}
+\usepackage{microtype}
+\usepackage{needspace}
+\let\oldsection\section
+\renewcommand{\section}{\Needspace{12\baselineskip}\oldsection}   % keep problem headings off page bottoms
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkcolor  = blue!50!black,
+    citecolor  = black,
+    urlcolor   = blue!50!black,
+}
+\usepackage{cleveref}
+
+% ── Code listing style ─────────────────────────────────────────────────────
+\definecolor{codebg}{RGB}{247,247,250}
+\definecolor{codekeyword}{RGB}{0,33,165}
+\definecolor{codecomment}{RGB}{110,110,110}
+\definecolor{codestring}{RGB}{160,30,30}
+
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\scriptsize,
+    keywordstyle=\color{codekeyword}\bfseries,
+    commentstyle=\color{codecomment}\itshape,
+    stringstyle=\color{codestring},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=8pt,
+    frame=single,
+    rulecolor=\color{black!20},
+    breaklines=true,
+    breakatwhitespace=false,
+    showstringspaces=false,
+    tabsize=4,
+    captionpos=b,
+    columns=fullflexible,
+    keepspaces=true,
+    extendedchars=true,
+    literate=
+        {—}{{---}}1
+        {∊}{{$\in$}}1
+}
+\lstset{style=pythonstyle}
+
+% ── Program output style ───────────────────────────────────────────────────
+\lstdefinestyle{outputstyle}{
+    language={},
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small,
+    frame=single,
+    rulecolor=\color{black!20},
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    numbers=none,
+}
+\newcommand{\programoutput}[2][]{\lstinputlisting[style=outputstyle,#1]{#2}}
+
+% ── Colors used in the figures (match the handwritten diagrams) ────────────
+\definecolor{hwpurple}{RGB}{90,45,145}
+\definecolor{hwmagenta}{RGB}{230,0,200}
+\definecolor{hwblue}{RGB}{20,70,190}
+\definecolor{hwred}{RGB}{225,30,30}
+\definecolor{hwgreen}{RGB}{0,130,70}
+
+% ── Vector notation (underbar, matching handwritten convention) ────────────
+\newcommand{\vect}[1]{\underline{#1}}
+\newcommand{\ivect}[1]{{}^{I}\underline{#1}}   % inertial-frame vector, e.g. {}^I v
+\newcommand{\Iddt}{{}^{I}\!\frac{d}{dt}}         % inertial time derivative
+\newcommand{\En}{\mathcal{E}}                   % specific mechanical energy
+
+% ── Divider page (used for the appendix section-break) ─────────────────────
+\newcommand{\dividerpage}[3]{%
+    \clearpage
+    \thispagestyle{empty}
+    \begin{center}
+        \vspace*{\fill}
+        {\Huge\bfseries #1\par}
+        \vspace{1cm}
+        {\Large #2\par}
+        \vspace{1.5cm}
+        {\normalsize #3\par}
+        \vspace*{\fill}
+    \end{center}
+    \clearpage
+}
+
+% ── Source code link ────────────────────────────────────────────────────────
+\newcommand{\repolink}{\url{https://github.com/PabloCoralDev/Astrodynamics-HW4}}
+
+\title{EAS4510: Homework Assignment \#4}
+\author{Pablo Coral}
+\date{\today}
+
+\begin{document}
+
+% ── Cover page ───────────────────────────────────────────────────────────
+\pagenumbering{roman}
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+    {\LARGE\bfseries EAS4510: Homework Assignment \#4\par}
+    \vspace{0.8cm}
+    {\Large Chapter 3: The Orbit as a Function of Time\par}
+    \vspace{1.5cm}
+    {\Large Pablo Coral\par}
+    \vspace{0.5cm}
+    {\large \today\par}
+    \vspace{1cm}
+    {\normalsize All code and sources can be found in: \repolink\par}
+    \vfill
+\end{titlepage}
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{sections/problem1}
+\input{sections/problem2}
+\input{sections/problem3}
+\input{sections/problem4}
+\input{sections/problem5}
+\input{sections/problem6}
+\input{sections/problem7}
+\input{sections/problem8}
+
+% ── References (IEEE style) ────────────────────────────────────────────────
+\begin{thebibliography}{1}
+\bibitem{rocha2018}
+A.~Rocha, ``Numerical methods and tolerance analysis for orbit propagation,'' M.S. project, Dept.\ Aerospace Eng., San Jos\'e State Univ., San Jos\'e, CA, USA, 2018. [Online]. Available: \url{https://www.sjsu.edu/ae/docs/project-thesis/Angel.Rocha.Sp18.pdf}
+\end{thebibliography}
+
+\dividerpage{Appendices}{Python Source Code}{All code and sources found in: \repolink}
+\appendix
+\input{sections/appendix_code}
+
+\end{document}

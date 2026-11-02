@@ -1,0 +1,42 @@
+\section{Problem 3-2}
+\label{sec:problem2}
+
+For an elliptic orbit ($0 \le e < 1$), the position and inertial velocity at an arbitrary time $t$ are obtained from $\vect{r}(t_0)$, $\ivect{v}(t_0)$, $t_0$, $t$, and $\mu$ using the five-step method of Section 3.5:
+\begin{enumerate}
+    \item Compute the orbital elements $(a, e, \Omega, i, \omega, \nu_0)$ from $\vect{r}(t_0)$, $\ivect{v}(t_0)$.
+    \item Solve for $E_0$ from $\nu_0$ using
+    \begin{equation}
+        E_0 = 2\tan^{-1}\!\left[\sqrt{1-e}\sin\!\left(\frac{\nu_0}{2}\right),\ \sqrt{1+e}\cos\!\left(\frac{\nu_0}{2}\right)\right].
+    \end{equation}
+    \item Solve the general form of Kepler's equation for $E(t)$ to obtain C:
+    \begin{equation}
+        E - e\sin E = \sqrt{\frac{\mu}{a^3}}(t-t_0) - 2\pi k + \big(E_0 - e\sin E_0\big) \equiv C,
+    \end{equation}
+    using the fixed-point iteration
+    \begin{equation}
+        E^{(n+1)} = e\sin E^{(n)} + C,
+    \end{equation}
+    with the suggested initial guess:
+    \begin{equation}
+        E^{(0)} = M_0 = E_0 - e\sin E_0,
+    \end{equation}
+    and run for the suggested number of iterations
+    \begin{equation}
+        N = 10\left\lceil \frac{1}{1-e} \right\rceil
+    \end{equation}
+    The integer $k$ is the number of periapsis crossings between $t_0$ and $t$, obtained from
+    \begin{equation}
+        k = \left\lfloor \frac{M_0 + \sqrt{\mu/a^3}\,(t-t_0)}{2\pi} \right\rfloor.
+    \end{equation}
+    \item Recover the true anomaly at $t$ from the obtained $E$ (in step 3),
+    \begin{equation}
+        \nu = 2\tan^{-1}\!\left[\sqrt{1+e}\sin\!\left(\frac{E}{2}\right),\ \sqrt{1-e}\cos\!\left(\frac{E}{2}\right)\right].
+    \end{equation}
+    \item Transform the elements $(a, e, \Omega, i, \omega, \nu)$ back to $\vect{r}(t)$, $\ivect{v}(t)$.
+\end{enumerate}
+
+This method is implemented as \texttt{kepler.propagate\_kepler(r0, v0, t0, t, mu)} in \texttt{kepler.py}, built on the element conversions in \texttt{elements.py}. It takes a column vector $\vect{r}(t_0)$, a column vector $\ivect{v}(t_0)$, scalars $t_0$, $t$, and $\mu$, and returns column vectors $\vect{r}(t)$ and $\ivect{v}(t)$. The output below demonstrates the function on Case 1.
+
+\programoutput{outputs/problem2.txt}
+
+\FloatBarrier
